@@ -43,6 +43,4 @@ const playShutter = async () => {
   }
 }
 
-if (window.confirm('The shutter sound will be played back.')) {
-  playShutter()
-}
+document.getElementById('play-button').addEventListener('click', playShutter, { once: true, passive: true })
