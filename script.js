@@ -1,4 +1,6 @@
 const MAX_DISTANCE = 500
+const MIN_DELAY = 100
+const DELAY_RANGE = 1000
 
 const AudioContext = window.AudioContext || window.webkitAudioContext
 const audioContext = new AudioContext()
@@ -41,7 +43,7 @@ const playShutter = async (e) => {
     pannerNode.setPosition(posX, posY, posZ)
     pannerNode.setOrientation(posX / dist, posY / dist, posZ / dist)
     audioBufferSourceNode.connect(pannerNode).connect(audioContext.destination)
-    await sleep(100 + Math.random() * 1000)
+    await sleep(MIN_DELAY + Math.random() * DELAY_RANGE)
     audioBufferSourceNode.start()
   }
 }
