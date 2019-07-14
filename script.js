@@ -23,6 +23,7 @@ const getAudioBuffer = (url) => (
 )
 
 const buffer = getAudioBuffer('shutter.mp3')
+document.ontouchmove = e => { e.preventDefault() }
 
 const playShutter = async (e) => {
   e.target.remove()
