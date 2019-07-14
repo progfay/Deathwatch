@@ -22,7 +22,13 @@ const getAudioBuffer = (url) => (
 
 const buffer = getAudioBuffer('shutter.mp3')
 
-const playShutter = async () => {
+const playShutter = async (e) => {
+  e.target.remove()
+  const div = document.createElement('div')
+  div.className = 'eyes'
+  div.appendChild(document.createTextNode('👁'.repeat(500)))
+  document.body.appendChild(div)
+  document.body.style.background = 'red'
   while (true) {
     const audioBufferSourceNode = audioContext.createBufferSource()
     audioBufferSourceNode.buffer = await buffer

@@ -26,3 +26,15 @@ body {
     border-radius: 50%;
     font-size: 20vmin;
 }
+
+.eyes {
+    font-size: 5vmax;
+    position: fixed;
+    width: 120vw;
+    height: 120vh;
+    line-height: 4vmax;
+    overflow: hidden;
+    top: -3vmax;
+    left: -3vmax;
+    user-select: none;
+}
