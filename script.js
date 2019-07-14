@@ -20,17 +20,14 @@ const getAudioBuffer = (url) => (
   })
 )
 
-const createAudioBufferSourceNode = audioBuffer => {
-  const source = audioContext.createBufferSource()
-  source.buffer = audioBuffer
-  return source
-}
+const buffer = getAudioBuffer('shutter.mp3')
 
 const playShutter = async () => {
-  const buffer = await getAudioBuffer('shutter.mp3')
   while (true) {
-    const audioBufferSourceNode = createAudioBufferSourceNode(buffer)
-    const pannerNode = new window.PannerNode(audioContext, { panningModel: 'HRTF' })
+    const audioBufferSourceNode = audioContext.createBufferSource()
+    audioBufferSourceNode.buffer = await buffer
+    const pannerNode = audioContext.createPanner()
+    pannerNode.panningModel = 'HRTF'
     const posX = (Math.random() - 0.5) * MAX_DISTANCE
     const posY = (Math.random() - 0.5) * MAX_DISTANCE
     const posZ = (Math.random() - 0.5) * MAX_DISTANCE
