@@ -67,7 +67,7 @@ self.__precacheManifest = [
   },
   {
     "url": "script.js",
-    "revision": "78415586d28c183769cd7deea3ba9102"
+    "revision": "96d0e093deab064f59222071e3fc10f7"
   },
   {
     "url": "shutter.mp3",
@@ -83,7 +83,7 @@ self.__precacheManifest = [
   },
   {
     "url": "manifest.json",
-    "revision": "732c8089f8e39f0599802abd90cce13f"
+    "revision": "4dcda44b16b87bf94b948c3054eeea16"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
