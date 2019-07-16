@@ -35,6 +35,8 @@ const playShutter = async (e) => {
   while (true) {
     const audioBufferSourceNode = audioContext.createBufferSource()
     audioBufferSourceNode.buffer = await buffer
+    const gainNode = audioContext.createGain()
+    gainNode.gain.setValueAtTime(10, 0)
     const pannerNode = audioContext.createPanner()
     pannerNode.panningModel = 'HRTF'
     const posX = (Math.random() - 0.5) * MAX_DISTANCE
@@ -43,7 +45,7 @@ const playShutter = async (e) => {
     const dist = Math.sqrt(posX ** 2 + posY ** 2 + posZ ** 2)
     pannerNode.setPosition(posX, posY, posZ)
     pannerNode.setOrientation(posX / dist, posY / dist, posZ / dist)
-    audioBufferSourceNode.connect(pannerNode).connect(audioContext.destination)
+    audioBufferSourceNode.connect(gainNode).connect(pannerNode).connect(audioContext.destination)
     await sleep(MIN_DELAY + Math.random() * DELAY_RANGE)
     audioBufferSourceNode.start()
   }
